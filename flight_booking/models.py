@@ -2,17 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-class Person(models.Model):   
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.first_name, ',', self.last_name
-
-    class Meta:
-        abstract = True
-
-
 class SeatConf(models.Model):
     seat_conf_id = models.IntegerField(primary_key=True)
     First_Class = 'FC'
@@ -83,7 +72,6 @@ class Airplane(models.Model):
                 self.seats_remaining.append(Seat(row_number, seat_number))
 '''
 class Seat(models.Model):
-
     plane_id = models.ForeignKey(Airplane, on_delete=models.CASCADE)
     First_Class = 'FC'
     Business_Class = 'BC'
@@ -101,19 +89,18 @@ class Seat(models.Model):
     def is_upperclass(self):
         return self.category in (self.First_Class, self.Business_Class, self.Economic_Class)
 
-class Passenger(Person):
-    seat_PNR = models.ForeignKey(Seat, on_delete=models.CASCADE)    
+class Passenger(models.Model): 
+    seat_PNR = models.ForeignKey(Seat, on_delete=models.CASCADE)      
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
 
-#class Admin(Person):
+    def __str__(self):
+        return self.first_name, ',', self.last_name
 
-#    def create_airplane(self):
-#       new_airplane = Airplane(Ptype, SeatConf)
-
-#    def create_flight(self, parameter_list):
-#        pass
-
-#    def create_seatConf(self):
-#        seat_conf = SeatConf(category: char, rows: int, seats_row: int, start_row: int)
+class Flight(models.Model):
+    airplane_id = models.ForeignKey(Airplane, on_delete=models.CASCADE)
+    origin = models.CharField(max_length = 50)
+    destination = models.CharField(max_length = 50)
 
 
 
