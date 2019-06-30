@@ -7,28 +7,6 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
-class AirplaneForm(ModelForm):
-    class Meta:
-        model = Airplane
-        fields = "__all__" 
-
-
-def Airplane_list(request, template = 'flight_booking/Airplane_list.html'):
-    Airplanes = Airplane.objects.all()
-    data = {}
-    data['object_list'] = Airplanes
-    return render(request, 'Airplane_list.html', data)
-
-def Airplane_create(request):
-    if request.POST:
-        form = AirplaneForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('flight_booking.views.Airplane_list')
-    else:
-        form = AirplaneForm()
-    return render(request, 'Airplane_create.html', {'form': form})
-
 class FlightForm(ModelForm):
     class Meta:
         model = Flight

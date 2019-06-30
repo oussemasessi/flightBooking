@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h1>Airplanes</h1>
+<a href="{% url 'flight_booking.views.Airplane_create' %}">New</a>
+{% for Airplane in Airplanes %}
+    <ul>
+        <li>{{ Airplane.P_type }}  : {{ Airplane.P_Capacity }}
+            <a href="{% url 'flight_booking.views.Airplane_update' Airplane.id %}">Edit</a>
+            <a href="{% url 'flight_booking.views.Airplane_delete' Airplane.id %}">Delete</a>
+        </li>
+    </ul>
+{% empty %}
+    <p>No Airplane yet</p>
+{% endfor %}
+</body>
+</html>
