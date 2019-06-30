@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.forms import ModelForm
-from flight_booking.models import Airplane, Flight, SeatConf, Passenger
+from flight_booking.models import Airplane, Flight, SeatConf, Passenger, Seat
 from django.http import HttpResponse
 
 
@@ -92,12 +92,17 @@ def Passenger_Create(request):
     if request.POST:
         form = PassengerForm(request.POST)
         if form.is_valid():
-            
             form.save()
             return redirect('flight_booking.views.Passenger_list')
     else:
         form = PassengerForm()
     return render(request, 'Passenger_create.html', {'form': form})
+
+class Seat(ModelForm)
+
+def Choose_Seat(request):
+    if request.POST:
+
 
 
 

@@ -1,4 +1,6 @@
 from django.db import models
+import random
+import string
 
 # Create your models here.
 
@@ -90,7 +92,8 @@ class Seat(models.Model):
         return self.category in (self.First_Class, self.Business_Class, self.Economic_Class)
 
 class Passenger(models.Model): 
-    seat_PNR = models.ForeignKey(Seat, on_delete=models.CASCADE)      
+    PNR = ''.join(random.choices(string.digits, k=8))
+    #seat_PNR = models.ForeignKey(Seat, on_delete=models.CASCADE)      
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
 
