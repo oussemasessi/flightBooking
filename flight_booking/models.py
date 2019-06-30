@@ -73,8 +73,19 @@ class Airplane(models.Model):
             for seat_number in range(SeatConf.seats_row):
                 self.seats_remaining.append(Seat(row_number, seat_number))
 '''
+
+class Passenger(models.Model): 
+    PNR = ''.join(random.choices(string.digits, k=8))      
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.first_name, ',', self.last_name
+
+
 class Seat(models.Model):
     plane_id = models.ForeignKey(Airplane, on_delete=models.CASCADE)
+    seat_NPR = models.ForeignKey(Passenger, on_delete=models.CASCADE)
     First_Class = 'FC'
     Business_Class = 'BC'
     Economic_Class = 'EC'
@@ -91,14 +102,6 @@ class Seat(models.Model):
     def is_upperclass(self):
         return self.category in (self.First_Class, self.Business_Class, self.Economic_Class)
 
-class Passenger(models.Model): 
-    PNR = ''.join(random.choices(string.digits, k=8))
-    #seat_PNR = models.ForeignKey(Seat, on_delete=models.CASCADE)      
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.first_name, ',', self.last_name
 
 class Flight(models.Model):
     airplane_id = models.ForeignKey(Airplane, on_delete=models.CASCADE)

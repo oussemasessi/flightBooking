@@ -98,11 +98,11 @@ def Passenger_Create(request):
         form = PassengerForm()
     return render(request, 'Passenger_create.html', {'form': form})
 
-class Seat(ModelForm)
+'''class Seat(ModelForm)
 
 def Choose_Seat(request):
     if request.POST:
 
-
+'''
 
 
