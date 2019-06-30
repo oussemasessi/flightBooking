@@ -92,11 +92,17 @@ def Passenger_Create(request):
     if request.POST:
         form = PassengerForm(request.POST)
         if form.is_valid():
+
             form.save()
             return redirect('flight_booking.views.Passenger_list')
     else:
         form = PassengerForm()
     return render(request, 'Passenger_create.html', {'form': form})
+
+def Passenger_select_seat(request):
+    for seat in Airplane.seats_remaining:
+        if not Airplane.seats_remaining[seat]: Airplane.seats_remaining.append(Seat.__init__())
+
 
 '''class Seat(ModelForm)
 

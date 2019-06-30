@@ -63,6 +63,7 @@ class Airplane(models.Model):
     
     P_Capacity = models.PositiveIntegerField()
     seat_conf_id = models.ForeignKey(SeatConf, on_delete=models.CASCADE)
+    seats_remaining = [P_Capacity]
     
 '''    def __init__(self, Ptype, SeatConf):
         if (P_type in type_Choices):
@@ -85,7 +86,7 @@ class Passenger(models.Model):
 
 class Seat(models.Model):
     plane_id = models.ForeignKey(Airplane, on_delete=models.CASCADE)
-    seat_NPR = models.ForeignKey(Passenger, on_delete=models.CASCADE)
+    seat_PNR = models.ForeignKey(Passenger, on_delete=models.CASCADE)
     First_Class = 'FC'
     Business_Class = 'BC'
     Economic_Class = 'EC'
@@ -101,6 +102,8 @@ class Seat(models.Model):
     )
     def is_upperclass(self):
         return self.category in (self.First_Class, self.Business_Class, self.Economic_Class)
+    def __init__(self, category=None):
+        self.category=category
 
 
 class Flight(models.Model):
