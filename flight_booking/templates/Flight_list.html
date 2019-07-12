@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flights list</title>
+</head>
+<body>
+<h1>Flights</h1>
+<a href="{% url 'flight_booking.views.Flight_Create' %}">New</a>
+{% for Flight in Flights %}
+    <ul>
+        <li>{{ Flight.P_type }}  : {{ Flight.P_Capacity }}
+            <a href="{% url 'flight_booking.views.Flight_update' Flight.id %}">Edit</a>
+            <a href="{% url 'flight_booking.views.Flight_delete' Flight.id %}">Delete</a>
+        </li>
+    </ul>
+{% empty %}
+    <p>No Flight yet</p>
+{% endfor %}
+</body>
+</html>

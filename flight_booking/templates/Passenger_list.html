@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Passengers list</title>
+</head>
+<body>
+<h1>Passengers</h1>
+<a href="{% url 'Passenger_booking.views.Passenger_create' %}">New</a>
+{% for Passenger in Passengers %}
+    <ul>
+        <li>{{ Passenger.P_type }}  : {{ Passenger.P_Capacity }}
+            <a href="{% url 'Passenger_booking.views.Passenger_update' Passenger.id %}">Edit</a>
+            <a href="{% url 'Passenger_booking.views.Passenger_delete' Passenger.id %}">Delete</a>
+        </li>
+    </ul>
+{% empty %}
+    <p>No Passenger yet</p>
+{% endfor %}
+</body>
+</html>
