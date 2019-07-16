@@ -66,7 +66,7 @@ def Flight_list(request, template = 'flight_booking/Flight_list.html'):
     data['object_list'] = Flights
     return render(request, 'Flight_list.html', data)
 
-def Flight_Create(request):
+def Flight_create(request):
     if request.POST:
         form = FlightForm(request.POST)
         if form.is_valid():
@@ -87,7 +87,7 @@ def Passenger_list(request, template = 'flight_booking/Passenger_list.html'):
     data['object_list'] = Passengers
     return render(request, 'Passenger_list.html', data)
 
-def Passenger_Create(request):
+def Passenger_create(request):
     if request.POST:
         form = PassengerForm(request.POST)
         if form.is_valid():
@@ -97,6 +97,8 @@ def Passenger_Create(request):
         form = PassengerForm()
     return render(request, 'Passenger_create.html', {'form': form})
 
+'''
 def Passenger_select_seat(request):
     for seat in Airplane.seats_remaining:
         if not Airplane.seats_remaining[seat]: Airplane.seats_remaining.append(Seat.__init__())
+'''

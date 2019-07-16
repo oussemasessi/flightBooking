@@ -56,7 +56,7 @@ class Flight(models.Model):
     destination = models.CharField(max_length = 50)
 
 class Seat(models.Model):
-    Flight_id = models.ForeignKey(Flight, on_delete=models.CASCADE)
+    flight_id = models.ForeignKey(Flight, on_delete=models.CASCADE)
     PNR = models.IntegerField(primary_key=True)
     First_Class = 'FC'
     Business_Class = 'BC'

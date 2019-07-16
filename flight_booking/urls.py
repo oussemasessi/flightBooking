@@ -10,7 +10,7 @@ urlpatterns = [
     path('Airplane_create/<int:pk>', views.Airplane_create, name = 'Airplane_create'),
     path('SeatConf_create/<int:pk>', views.SeatConf_Create, name = 'SeatConf_create'),
     path('Flight_list/<int:pk>', views.Flight_list, name = 'Flight_list'),
-    path('Flight_Create/<int:pk>', views.Flight_Create, name = 'Flight_create'),
+    path('Flight_create/<int:pk>', views.Flight_create, name = 'Flight_create'),
     path('Passenger_list/<int:pk>', views.Passenger_list, name = 'Passenger_list'),
-    path('Passenger_Create/<int:pk>', views.Passenger_Create, name = 'Passenger_create'),
+    path('Passenger_create/<int:pk>', views.Passenger_create, name = 'Passenger_create'),
 ]
