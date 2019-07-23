@@ -5,4 +5,5 @@ from flight_booking.models import *
 admin.site.register(Airplane)
 admin.site.register(Flight)
 admin.site.register(SeatConf)
-admin.site.register(Passenger)
+admin.site.register(BookedSeat)
+admin.site.register(Seat)
